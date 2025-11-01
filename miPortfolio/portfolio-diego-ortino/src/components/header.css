@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-header{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.text-logo{
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.logo-header{
+    width: 100px;
+    height: auto;
+}
+
+.nav-container, .logo-container{
+    display: flex;
+    background: linear-gradient(90deg, #ffde59, #ff914d);
+    border-radius: 10px;
+    border: black 2px solid;
+}
+
+.nav-link{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.is-middle{
+    border-left: black 2px solid;
+    border-right: black 2px solid;
+}
