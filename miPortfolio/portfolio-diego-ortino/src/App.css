@@ -1,17 +1,67 @@
-#root{
+#root {
   margin: 0;
   padding: 0;
   font-family: Consolas, "Courier New", monospace;
-
 }
-main{
-  position: "relative";
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.main,
+main {
+  position: relative;
   z-index: 1;
 }
-canvas {
-  width:100%;
-  height:100%;
-  display:block;
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 6vw, 5rem);
+  box-sizing: border-box;
+  transition: padding 0.8s ease, align-items 0.8s ease;
+  pointer-events: none;
+}
+
+.app-shell--home {
+  align-items: center;
+}
+
+.app-shell--section {
+  align-items: flex-end;
+  padding-left: max(12vw, 8rem);
+  padding-right: clamp(2rem, 5vw, 4rem);
+}
+
+.app-shell .header {
+  pointer-events: auto;
+  width: fit-content;
+  align-self: center;
+  transition: transform 0.8s ease, align-self 0.8s ease;
+}
+
+.app-shell--section .header {
+  align-self: flex-end;
+}
+
+.app-shell__content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.app-shell__placeholder {
+  width: 100%;
+  height: 100%;
 }
 
 .link-clean {
