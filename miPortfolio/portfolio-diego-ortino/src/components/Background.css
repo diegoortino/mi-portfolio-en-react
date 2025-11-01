@@ -9,17 +9,12 @@
   align-items: center;
   pointer-events: none;
   z-index: 0;
-  transition: width 1s ease, transform 1s ease;
-  will-change: width, transform;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
   overflow: hidden;
 }
 
-.background-layer--sidebar {
-  width: max(10vw, 140px);
-  justify-content: flex-start;
-  transform: translateX(0);
-}
-
+.background-layer--sidebar,
 .background-layer--full {
-  width: 100vw;
+  justify-content: center;
 }

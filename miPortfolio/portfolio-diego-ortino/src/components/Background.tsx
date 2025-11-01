@@ -10,7 +10,7 @@ type BackgroundProps = {
 export default function Background({ variant }: BackgroundProps) {
   return (
     <div className={`background-layer background-layer--${variant}`}>
-      <ShaderSphere />
+      <ShaderSphere variant={variant} />
     </div>
   );
 }
