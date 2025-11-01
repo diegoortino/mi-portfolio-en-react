@@ -1,0 +1,25 @@
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 0;
+  transition: width 1s ease, transform 1s ease;
+  will-change: width, transform;
+  overflow: hidden;
+}
+
+.background-layer--sidebar {
+  width: max(10vw, 140px);
+  justify-content: flex-start;
+  transform: translateX(0);
+}
+
+.background-layer--full {
+  width: 100vw;
+}

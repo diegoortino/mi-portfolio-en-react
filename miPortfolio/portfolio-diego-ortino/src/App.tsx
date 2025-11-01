@@ -1,32 +1,39 @@
-import { Header } from './components/header';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Background from './components/Background';
-import './App.css';
-import MisProyectos from './components/MisProyectos';
-import Contacto from './components/Contacto';
-import SobreMi from './components/SobreMi';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Background from "./components/Background";
+import "./App.css";
+import Contacto from "./components/Contacto";
+import MisProyectos from "./components/MisProyectos";
+import SobreMi from "./components/SobreMi";
+import { Header } from "./components/header";
 
-function App() {
+function AppLayout() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
     <>
-      <Background />
-      <main style={{ position: "relative", zIndex: 1 }}>
-        <BrowserRouter>
-          {/* Header fijo en todas las páginas */}
-          <Header />
-
-          {/* Rutas */}
+      <Background variant={isHome ? "full" : "sidebar"} />
+      <main className={`app-shell ${isHome ? "app-shell--home" : "app-shell--section"}`}>
+        <Header />
+        <div className="app-shell__content">
           <Routes>
-            <Route path="/"/>
+            <Route path="/" element={<div className="app-shell__placeholder" />} />
             <Route path="/sobre-mi" element={<SobreMi />} />
             <Route path="/mis-proyectos" element={<MisProyectos />} />
             <Route path="/contacto" element={<Contacto />} />
-            {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </BrowserRouter>
+        </div>
       </main>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
   );
 }
 

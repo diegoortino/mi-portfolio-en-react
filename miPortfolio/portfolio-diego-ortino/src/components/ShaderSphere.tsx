@@ -163,8 +163,8 @@ export default function ShaderSphere() {
 
   useEffect(() => {
     const container = containerRef.current!;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || window.innerWidth;
+    const height = container.clientHeight || window.innerHeight;
 
     // Scene / Renderer
     const scene = new THREE.Scene();
@@ -245,15 +245,22 @@ export default function ShaderSphere() {
       .to(material.uniforms.u_progress, { value: 1, duration: 5, ease: "power3.inOut" });
     gsap.to(pointsMaterial.uniforms.u_progress, { value: 0.4, duration: 5, ease: "power3.inOut" });
 
-    // Resize
-    const onResize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
+    // Resize handling
+    const handleResize = () => {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };
-    window.addEventListener("resize", onResize);
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    resizeObserver.observe(container);
 
     // Render loop
     let raf = 0;
@@ -272,7 +279,8 @@ export default function ShaderSphere() {
     // Cleanup
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       tl.kill();
       renderer.dispose();
       geo.dispose();
@@ -290,7 +298,7 @@ export default function ShaderSphere() {
   return (
     <div
       ref={containerRef}
-      style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
+      style={{ width: "100%", height: "100%", overflow: "hidden" }}
     />
   );
 }
