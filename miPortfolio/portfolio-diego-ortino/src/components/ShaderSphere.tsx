@@ -3,8 +3,15 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { gsap } from "gsap";
 
-export default function ShaderSphere() {
+type ShaderSphereProps = {
+  variant: "full" | "sidebar";
+};
+
+export default function ShaderSphere({ variant }: ShaderSphereProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const modelGroupRef = useRef<THREE.Group | null>(null);
+  const shiftTweenRef = useRef<gsap.core.Tween | null>(null);
+  const scaleTweenRef = useRef<gsap.core.Tween | null>(null);
 
   // ====== SHADERS (copiados de tus <script id="...">) ======
   const backgroundFragment = `
@@ -163,8 +170,8 @@ export default function ShaderSphere() {
 
   useEffect(() => {
     const container = containerRef.current!;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || window.innerWidth;
+    const height = container.clientHeight || window.innerHeight;
 
     // Scene / Renderer
     const scene = new THREE.Scene();
@@ -204,7 +211,9 @@ export default function ShaderSphere() {
     // Mesh: sphere
     const geo = new THREE.SphereGeometry(1, 162, 162);
     const sphere = new THREE.Mesh(geo, material);
-    scene.add(sphere);
+
+    const modelGroup = new THREE.Group();
+    modelGroup.add(sphere);
 
     // Points (fibonacci sphere)
     const N = 30000;
@@ -223,7 +232,9 @@ export default function ShaderSphere() {
     const particleGeometry = new THREE.BufferGeometry();
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const points = new THREE.Points(particleGeometry, pointsMaterial);
-    scene.add(points);
+    modelGroup.add(points);
+    scene.add(modelGroup);
+    modelGroupRef.current = modelGroup;
 
     // Background plane
     const bgGeo = new THREE.PlaneGeometry(100, 15, 16);
@@ -245,15 +256,22 @@ export default function ShaderSphere() {
       .to(material.uniforms.u_progress, { value: 1, duration: 5, ease: "power3.inOut" });
     gsap.to(pointsMaterial.uniforms.u_progress, { value: 0.4, duration: 5, ease: "power3.inOut" });
 
-    // Resize
-    const onResize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
+    // Resize handling
+    const handleResize = () => {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };
-    window.addEventListener("resize", onResize);
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    resizeObserver.observe(container);
 
     // Render loop
     let raf = 0;
@@ -263,6 +281,7 @@ export default function ShaderSphere() {
       material.uniforms.u_time.value = t;
       pointsMaterial.uniforms.u_time.value = t;
       backgroundMaterial.uniforms.u_time.value = t;
+      modelGroup.rotation.y += 0.003;
       points.rotation.y += 0.005;
       camera.lookAt(scene.position);
       renderer.render(scene, camera);
@@ -272,8 +291,13 @@ export default function ShaderSphere() {
     // Cleanup
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       tl.kill();
+      shiftTweenRef.current?.kill();
+      scaleTweenRef.current?.kill();
+      shiftTweenRef.current = null;
+      scaleTweenRef.current = null;
       renderer.dispose();
       geo.dispose();
       particleGeometry.dispose();
@@ -281,16 +305,52 @@ export default function ShaderSphere() {
       material.dispose();
       pointsMaterial.dispose();
       backgroundMaterial.dispose();
+      scene.remove(modelGroup);
+      modelGroupRef.current = null;
       if (renderer.domElement.parentElement) {
         renderer.domElement.parentElement.removeChild(renderer.domElement);
       }
     };
   }, []);
 
+  useEffect(() => {
+    const group = modelGroupRef.current;
+    if (!group) return;
+
+    const targetX = variant === "sidebar" ? -3.4 : 0;
+    const targetScale = variant === "sidebar" ? 0.55 : 1;
+
+    shiftTweenRef.current?.kill();
+    scaleTweenRef.current?.kill();
+
+    shiftTweenRef.current = gsap.to(group.position, {
+      x: targetX,
+      duration: 1.2,
+      ease: "power3.inOut",
+      overwrite: "auto"
+    });
+
+    scaleTweenRef.current = gsap.to(group.scale, {
+      x: targetScale,
+      y: targetScale,
+      z: targetScale,
+      duration: 1.2,
+      ease: "power3.inOut",
+      overwrite: "auto"
+    });
+
+    return () => {
+      shiftTweenRef.current?.kill();
+      scaleTweenRef.current?.kill();
+      shiftTweenRef.current = null;
+      scaleTweenRef.current = null;
+    };
+  }, [variant]);
+
   return (
     <div
       ref={containerRef}
-      style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
+      style={{ width: "100%", height: "100%", overflow: "hidden" }}
     />
   );
 }

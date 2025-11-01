@@ -1,17 +1,16 @@
-// Background.tsx
 import ShaderSphere from "./ShaderSphere";
+import "./Background.css";
 
-export default function Background() {
+type BackgroundVariant = "full" | "sidebar";
+
+type BackgroundProps = {
+  variant: BackgroundVariant;
+};
+
+export default function Background({ variant }: BackgroundProps) {
   return (
-    <div
-      style={{
-        position: "fixed",  // queda pegado al viewport
-        inset: 0,           // top/right/bottom/left: 0
-        zIndex: 0,          // detrás del contenido (ajustable)
-        pointerEvents: "none", // deja pasar los clicks
-      }}
-    >
-      <ShaderSphere /> {/* tu componente de Three */}
+    <div className={`background-layer background-layer--${variant}`}>
+      <ShaderSphere variant={variant} />
     </div>
   );
 }
