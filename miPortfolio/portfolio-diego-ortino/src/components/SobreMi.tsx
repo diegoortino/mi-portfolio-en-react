@@ -1,3 +1,5 @@
+import './SobreMi.css';
+
 export function SobreMi() {
 
     return (

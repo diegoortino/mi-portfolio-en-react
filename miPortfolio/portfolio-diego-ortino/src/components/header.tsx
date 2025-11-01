@@ -15,24 +15,15 @@ export function Header() {
 
       {/* Navegación */}
       <nav className="nav-container">
-
-        <Link to="/SobreMi" className="link-clean">
-            <nav className="nav-link is-first">
-                <p className="text-header">Sobre mi</p>
-            </nav>
-          </Link>
-
-        <Link to="/MisProyectos" className="link-clean">
-            <nav className="nav-link is-middle">
-                <p className="text-header">Mis proyectos</p>
-            </nav>
-          </Link>
-
-        <Link to="/Contacto" className="link-clean">
-          <nav className="nav-link is-last">
-              <p className="text-header">Contacto</p>
-          </nav>
-          </Link>
+        <Link to="/sobre-mi" className="link-clean">
+          <nav className="nav-link is-first"><p className="text-header">Sobre mi</p></nav>
+        </Link>
+        <Link to="/mis-proyectos" className="link-clean">
+          <nav className="nav-link is-middle"><p className="text-header">Mis proyectos</p></nav>
+        </Link>
+        <Link to="/contacto" className="link-clean">
+          <nav className="nav-link is-last"><p className="text-header">Contacto</p></nav>
+        </Link>
       </nav>
     </header>
   );

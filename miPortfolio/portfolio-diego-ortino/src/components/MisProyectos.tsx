@@ -1,3 +1,5 @@
+import './MisProyectos.css';
+
 export function MisProyectos() {
 
     return (
