@@ -1,0 +1,7 @@
+.aboutMe-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500vh;
+    background-color: rgba(240, 240, 240, 0.80);
+}
