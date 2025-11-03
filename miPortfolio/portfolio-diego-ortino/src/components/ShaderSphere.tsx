@@ -317,7 +317,7 @@ export default function ShaderSphere({ variant }: ShaderSphereProps) {
     const group = modelGroupRef.current;
     if (!group) return;
 
-    const targetX = variant === "sidebar" ? -3.4 : 0;
+    const targetX = variant === "sidebar" ? -5.5 : 0;
     const targetScale = variant === "sidebar" ? 0.55 : 1;
 
     shiftTweenRef.current?.kill();

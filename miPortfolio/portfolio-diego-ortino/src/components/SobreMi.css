@@ -1,8 +1,42 @@
 .aboutMe-section-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
     height: 500px;
     width: 40%;
-    background-color: rgba(240, 240, 240, 0.80);
+    background: linear-gradient(90deg, #ffde59, #ff914d);
+    margin-top: 20px;
+    border-radius: 15px;
+    margin-right: 2.5%;
 }
+
+.hero-tittle {
+    margin-left: 5%;
+}
+
+.hero-tittle-text {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.hero-content {
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-right: 5%;
+}
+
+.hero-content-text {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.hero-button {
+    background: linear-gradient(90deg, #ffde59, #ff914d);
+    border-radius: 10px;
+    padding: 10px;
+    border: black 2px solid;
+    font-size: 25px;
+    font-family: Consolas, "Courier New", monospace;
+}
+
