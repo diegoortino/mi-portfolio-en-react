@@ -1,18 +1,17 @@
-import { Header } from './components/header';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Background from './components/Background';
 import './App.css';
-import MisProyectos from './components/MisProyectos';
-import Contacto from './components/Contacto';
-import SobreMi from './components/SobreMi';
+import { Header } from './components/header';
+import { Footer} from './components/footer';
+import MisProyectos from './components/myProyects/MisProyectos';
+import Contacto from './components/contact/Contacto';
+import SobreMi from './components/aboutMe/SobreMi';
 
 function App() {
   return (
     <>
-      <Background />
-      <main style={{ position: "relative", zIndex: 1 }}>
+      <main>
         <BrowserRouter>
-          {/* Header fijo en todas las páginas */}
+
           <Header />
 
           {/* Rutas */}
@@ -24,6 +23,9 @@ function App() {
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+
+          <Footer />
+
         </BrowserRouter>
       </main>
     </>

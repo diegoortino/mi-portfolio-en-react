@@ -1,3 +1,4 @@
+/* header.css */
 .header {
     display: flex;
     justify-content: space-between;
@@ -5,11 +6,16 @@
     margin-top: 20px;
     padding-left: 5%;
     padding-right: 5%;
+    width: 90%;
 }
+
 .logo-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(90deg, #B0C9D9, #F2B5A7);
+    border-radius: 10px;
+    border: black 2px solid;
 }
 
 .text-header{
@@ -29,9 +35,11 @@
     height: auto;
 }
 
-.nav-container, .logo-container{
+/* NAV: contenedor del menú */
+.nav-container{
+    position: relative;  /* IMPORTANTE para la línea */
     display: flex;
-    background: linear-gradient(90deg, #ffde59, #ff914d);
+    background: linear-gradient(90deg, #B0C9D9, #F2B5A7);   
     border-radius: 10px;
     border: black 2px solid;
 }

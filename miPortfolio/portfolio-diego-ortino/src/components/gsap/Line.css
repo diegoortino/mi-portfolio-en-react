@@ -1,0 +1,15 @@
+/* Line.css */
+.line {
+  position: absolute;
+  bottom: 0;                  /* pegada al borde inferior del nav */
+  left: 0;
+  height: 4px;                /* grosor de la línea */
+  width: 0;                   /* GSAP va a animar este valor */
+  border-radius: 999px;
+  background-color: blanchedalmond;
+  /*
+  background: linear-gradient(90deg, #ffde59, #ff914d);
+  */
+  transform: translateX(0);
+  pointer-events: none;
+}
