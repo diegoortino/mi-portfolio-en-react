@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <pattern id="dots" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#f5d547" fill-opacity="0.35" />
+      <circle cx="10" cy="6" r="2" fill="#f5d547" fill-opacity="0.25" />
+      <circle cx="6" cy="12" r="2" fill="#f5d547" fill-opacity="0.3" />
+      <circle cx="14" cy="14" r="1.5" fill="#f5d547" fill-opacity="0.2" />
+    </pattern>
+    <filter id="noise" x="0" y="0">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="0.4" />
+        <feFuncG type="linear" slope="0.4" />
+        <feFuncB type="linear" slope="0.4" />
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="screen" />
+    </filter>
+  </defs>
+  <rect width="160" height="160" fill="url(#dots)" filter="url(#noise)" opacity="0.9" />
+</svg>
