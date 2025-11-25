@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate, useParams, HashRouter } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './sections/Hero';
@@ -34,12 +34,12 @@ function Page() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Page />} />
         <Route path="/blog/:postId" element={<Page />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
