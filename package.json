@@ -1,0 +1,12 @@
+{
+  "name": "mi-portfolio-en-react",
+  "private": true,
+  "workspaces": [
+    "PortfolioDiegoOrtino"
+  ],
+  "scripts": {
+    "dev": "npm --workspace PortfolioDiegoOrtino run dev",
+    "build": "npm --workspace PortfolioDiegoOrtino run build",
+    "preview": "npm --workspace PortfolioDiegoOrtino run preview"
+  }
+}
