@@ -46,7 +46,7 @@ export const projects: Project[] = [
     type: 'web',
     image:
       'proyects-images/gestionInterna.png',
-    links: { demo: 'https://app-gestion-gastos-diegoortino.vercel.app/login', },
+    links: { demo: 'app-gestion-gastos-diegoortino.vercel.app', },
     featured: true,
     date: '2024-11-15',
   }
