@@ -38,7 +38,7 @@ export function Projects() {
       id="projects"
       eyebrow="Proyectos"
       title="Proyectos destacados"
-      subtitle="UI editorial, automatización y backends listos para producción."
+      subtitle="Proyectos publicos desarrollados hasta el momento."
     >
       <div className="filter-bar">
         <div className="chip-group">
