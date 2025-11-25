@@ -8,5 +8,9 @@
     "dev": "npm --workspace PortfolioDiegoOrtino run dev",
     "build": "npm --workspace PortfolioDiegoOrtino run build",
     "preview": "npm --workspace PortfolioDiegoOrtino run preview"
+  },
+  "devDependencies": {
+    "rollup": "^4.53.3",
+    "vite": "^7.2.4"
   }
 }
