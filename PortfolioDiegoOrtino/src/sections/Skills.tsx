@@ -26,7 +26,7 @@ export function Skills() {
     <Section
       id="skills"
       eyebrow="Skills"
-      title="Habilidades tecnológicas"
+      title="Habilidades"
       subtitle="Stack que uso a diario para desarrollar productos y mantenerlos vivos."
       background="soft"
     >

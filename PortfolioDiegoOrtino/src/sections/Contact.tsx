@@ -21,7 +21,7 @@ export function Contact() {
       id="contact"
       eyebrow="Contacto"
       title="Hablemos"
-      subtitle="Proyectos, consultorías o mejoras en productos en vivo."
+      subtitle="Puedo ayudarte con tus proyectos, consultorías o automatizaciones."
       background="accent"
       align="center"
     >
@@ -32,7 +32,6 @@ export function Contact() {
             <p>Respondo en menos de 24hs. Compartí contexto y timeline.</p>
             <div className="contact-tags">
               <Tag tone="accent">{contact.location}</Tag>
-              <Tag>{contact.availability}</Tag>
             </div>
             <div className="contact-links">
               <Button href={`mailto:${contact.email}`}>Escribir</Button>
