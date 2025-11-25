@@ -43,14 +43,14 @@ export function Header() {
               key={item.id}
               className="nav-link"
               onClick={() => handleScroll(item.id)}
-              type="button"
+              type='button'
             >
               {item.label}
             </button>
           ))}
           <div className="nav-cta">
             <Button variant="ghost" onClick={() => handleScroll('contact')}>
-              Agenda una llamada
+              Hablemos
             </Button>
           </div>
         </nav>

@@ -350,9 +350,10 @@ p {
   font-weight: 800;
 }
 
-.brand-text strong {
+.brand-text {
   display: block;
   letter-spacing: 0.01em;
+  font-size: 1.2rem;
 }
 
 .brand-text small {
@@ -373,6 +374,7 @@ p {
   cursor: pointer;
   padding: 8px 10px;
   transition: color 150ms ease, transform 150ms ease;
+  font-size: 1rem;
 }
 
 .nav-link:hover {
