@@ -28,12 +28,12 @@ export const projects: Project[] = [
     id: 'gestion-interna',
     title: 'App interna para la gestion del personal',
     description:
-      'Plataforma pensada para que los colaboradores de una organizacion puedan gestionar sus ausencias y tareas pendientes. Utiliza Google Spreadsheets implmentado API mediante Apps Script para el backend, esto permite una facil gestion y mantenimiento de la informacion para el personal administrativo.',
+      'Plataforma pensada para que los colaboradores de una organizacion puedan gestionar sus ausencias y tareas pendientes. Utiliza Google Spreadsheets implmentado API mediante Apps Script para el backend, esto permite una facil gestion y mantenimiento de la informacion para el personal administrativo. Puede probarse con el usuario de prueba user_test@gmail.com y la contraseña Test1234.',
     tech: ['React', 'TypeScript', 'Vite', 'SpreadSheets', 'AppScripts'],
     type: 'web',
     image:
       'proyects-images/gestionInterna.png',
-    links: { demo: 'url no disponible', },
+    links: { demo: 'https://gestiondelpersonal-diegoortino.netlify.app/login', },
     featured: true,
     date: '2025-09-02',
   },
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     type: 'web',
     image:
       'proyects-images/gestionInterna.png',
-    links: { demo: 'app-gestion-gastos-diegoortino.vercel.app', },
+    links: { demo: 'app-gestion-gastos-diegoortino.vercel.app', repo: 'https://github.com/diegoortino/appGastos'},
     featured: true,
     date: '2024-11-15',
   }
