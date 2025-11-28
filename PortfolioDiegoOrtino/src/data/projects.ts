@@ -33,7 +33,7 @@ export const projects: Project[] = [
     type: 'web',
     image:
       'proyects-images/gestionInterna.png',
-    links: { demo: 'https://gestiondelpersonal-diegoortino.netlify.app/login', },
+    links: { demo: 'https://gestiondelpersonal-diegoortino.netlify.app', repo: 'https://github.com/diegoortino/gestion-del-personal' },
     featured: true,
     date: '2025-09-02',
   },
